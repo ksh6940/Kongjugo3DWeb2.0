@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const InquirySchema = mongoose.Schema(
+const EstimateSchema = mongoose.Schema(
     {
         title {
             type: String,
@@ -34,6 +34,6 @@ const InquirySchema = mongoose.Schema(
     }
 );
 
-const Inquiry = mongoose.model("Inquiry", InquirySchema);
+const Estimate = mongoose.model("Estimate", EstimateSchema);
 
-module.exports = Inquiry;
+module.exports = Estimate;
