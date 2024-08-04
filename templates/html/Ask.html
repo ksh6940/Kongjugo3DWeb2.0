@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공주고 3D 프린터실</title>
+    <link rel="stylesheet" href="css/Form.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+        <a href="/"><img src="source/img/logo.png"></a>
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar" class="menu"><box-icon name='menu'></box-icon></label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/Info">소개</a>
+                    <ul>
+                        <li><a href="/Info">소개말</a></li>
+                        <li><a href="/UseText">신청방법</a></li>
+                    </ul>
+                </li>
+                <li><a href="/Esetimate">견적</a></li>
+                <li><a href="/Ask">신청</a></li>
+                <li><a href="/Search">조회</a></li>
+                <li><a href="/Inquiry">문의</a>
+                    <ul>
+                        <li><a href="/Inquiry">질의응답</a></li>
+                        <li><a href="/InquiryEmail">이메일 문의</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <div class="form-container">
+            <h3>3D프린팅 신청하기</h3>
+            <form action="#">
+                <div class="form-group">
+                    <label for="name">이름</label>
+                    <input type="text" id="name" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="month">작업 희망일</label>
+                    <input type="date" name="month" id="month">
+                </div>
+                <div class="form-group">
+                    <label for="address">배송주소</label>
+                    <input type="text" name="address" id="address">
+                </div>
+                <div class="form-group">
+                    <label for="detail">설명</label>
+                    <textarea name="detail" id="detail" placeholder="출력물에 대해 설명해주세요"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="file">첨부파일</label>
+                    <input type="file" name="file" id="file">
+                </div>
+                <button type="submit" id="submitButton">제출</button>
+                <button type="button" id="resetButton">초기화</button>
+            </form>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const textarea = document.getElementById('detail');
+            const resetButton = document.getElementById('resetButton');
+
+            function adjustTextareaHeight(el) {
+                el.style.height = 'auto';
+                el.style.height = (el.scrollHeight) + 'px';
+            }
+
+            adjustTextareaHeight(textarea);
+
+            textarea.addEventListener('input', function () {
+                adjustTextareaHeight(this);
+            });
+
+            function clearValue() {
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('month').value = '';
+                document.getElementById('detail').value = '';
+                document.getElementById('file').value = '';
+                document.getElementById('address').value = '';
+
+                // textarea 높이 조정
+                adjustTextareaHeight(textarea);
+            }
+
+            resetButton.addEventListener('click', clearValue);
+
+            function getValue(){
+                const name = document.getElementById('name').value; 
+                const email = document.getElementById('email').value; 
+                const month = document.getElementById('month').value;
+                const detail = document.getElementById('detail').value; 
+                const file = document.getElementById('file').value;
+                const address = document.getElementById('address').value
+
+                const data = {
+                    "name": name,
+                    "email": email,
+                    "detail": detail,
+                    "file": file,
+                    "deadline": month,
+                    "address": address
+                }
+
+                return data;
+            }
+
+            function fetchAPI(){
+                const data = getValue();
+
+                fetch('http://localhost:3000/api/products', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    if (response.ok){
+                        return response.json();
+                    } else {
+                        throw new Error('네트워크 응답에 문제가 있습니다')
+                    }
+                })
+                .then(data => {
+                    console.log('성공 : ', data);
+                })
+                .catch(error => {
+                    console.error('오류 발생 : ', error)
+                })
+            }
+
+            submitButton.addEventListener('click', fetchAPI);
+        });
+    </script>
+    <footer>
+        <div class="row">
+            <div class="col">
+                <img src="source/img/logo.png" class="logo">
+                <p>공주고 3D프린터실은 요청하시는 모든 것을 프린팅해주는 서비스입니다.</p>
+            </div>
+            <div class="col">
+                <h3>찾아오는 길</h3>
+                <p>공주고등학교 과학정보관 2층 3D프린터실</p>
+                <p><a href="https://maps.app.goo.gl/9DQKK5ZnkdAi4hfk6">충청남도 공주시 공주고담길 2 (중학동)</a></p>
+            </div>
+            <div class="col">
+                <h3>바로가기</h3>
+                <ul>
+                    <li><a href="/Info">소개</a></li>
+                    <li><a href="/Esetimate">견적</a></li>
+                    <li><a href="/Ask">신청</a></li>
+                    <li><a href="/Such">조회</a></li>
+                    <li><a href="/Inquery">문의</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>연락처</h3>
+                <p>Web Manage <a href="mailto:20231601@kongjugo.cnehs.kr">20231601@kongjugo.cnehs.kr</a></p>
+                <p>Print Manger <a href="mailto:20231720@kongjugo.cnehs.kr">20231720@kongjugo.cnehs.kr</a></p>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Kongjugo 3D Printer Room @2024 - All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>
