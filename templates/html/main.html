@@ -7,13 +7,13 @@
   <title>공주고 3D 프린터실</title>
   <link rel="stylesheet" href="/templates/css/style.css">
   <link rel="stylesheet" href="/templates/css/Home.css">
-  <link rel="shortcut icon" type="x-icon" href="source/img/LogoIcon.png">
+  <link rel="shortcut icon" type="x-icon" href="/templates/source/img/LogoIcon.png">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
 <body>
   <header>
-    <a href="/"><img src="source/img/logo.png"></a>
+    <a href="/"><img src="/templates/source/img/logo.png"></a>
     <input type="checkbox" id="menu-bar">
     <label for="menu-bar" class="menu"><i class='bx bx-menu'></i></label>
     <nav class="navbar">
@@ -45,19 +45,62 @@
         }
       }
 
-      // 초기 로드 시 실행
       handleResize();
 
-      // 화면 크기 변경 시 이벤트 리스너 추가
       window.addEventListener('resize', handleResize);
-
     </script>
   </header>
-  <section>
-
-
-
-
+  <section class="home" id="home">
+    <div class="home-text">
+      <h1>공주고등학교</h1>
+      <h2>3D프린터실 <br> 출력 대행서비스</h2>
+      <a href="/ask" class="btn">신청하러가기</a>
+    </div>
+    <div class="home-img">
+      <img src="/templates/source/img/3DprinterIMG.png">
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div class="about-img">
+      <img src="/templates/source/img/KongjugoLogo.webp">
+    </div>
+    <div class="about-text">
+      <span>About Us</span>
+      <h2>공주고 3D 프린터실은 <br> 봉사활동으로 시작되었습니다</h2>
+      <p>저희는 3D프린터실의 관리와 유지 보수 그리고 선생님분들이 원하시는 교육 자료 등을 출력해드리는 활동을 2024년 한해 동안 진행하는 프로젝트 봉사활동으로 시작되었습니다. </p>
+    </div>
+  </section>
+  <section class="process" id="process">
+    <div class="heading">
+      <span>신청 절차</span>
+      <h2>신청부터 배달까지의 과정은 다음과 같습니다</h2>
+    </div>
+    <div class="process-container">
+      <div class="box">
+        <div class="box-img">
+          <img src="/templates/source/img/Document.png">
+        </div>
+        <h2>신청서 제출</h2>
+      </div>
+      <div class="box">
+        <div class="box-img">
+          <img src="/templates/source/img/Checkmark.png">
+        </div>
+        <h2>요청 확인 및 모델링</h2>
+      </div>
+      <div class="box">
+        <div class="box-img">
+          <img src="/templates/source/img/printer.png">
+        </div>
+        <h2>3D 프린터 출력</h2>
+      </div>
+      <div class="box">
+        <div class="box-img">
+          <img src="/templates/source/img/delivery.png">
+        </div>
+        <h2>배달</h2>
+      </div>
+    </div>
   </section>
   <footer>
 

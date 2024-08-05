@@ -10,6 +10,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'WavvePADO-Regular';
+    scroll-behavior: smooth;
     text-transform: capitalize;
     text-decoration: none;
 }

@@ -5,7 +5,6 @@ const path = require('path');
 
 //model 불러오기
 const Product = require('./models/Product.model.js');
-const Inquiry = require('./models/Inquiry.model.js');
 
 // Express App 설정
 const app = express();
