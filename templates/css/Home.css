@@ -93,10 +93,9 @@ section {
 
 .heading h2 {
     font-size: var(--h2-font);
-    margin: 0.8rem 0 0.8rem;
 }
 
-.process-container {
+.menu-container {
     display: grid;
     grid-template-columns: repeat(auta-fit, minmax(220px, auto));
     grid-gap: 1.5rem;
@@ -111,4 +110,29 @@ section {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px;
+    border-radius: 0.5rem;
 }
+
+.box-img {
+    width: 220px;
+    height: 220px;
+}
+
+.box-img img {
+    width: 100%;
+    height: 100%;
+}
+
+.box h2 {
+    font-size: 1.3rem;
+    color: var(--bg-color);
+}
+
+.box h3 {
+    color: var(--bg-color);
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 4px 0 10px;
+}
+
