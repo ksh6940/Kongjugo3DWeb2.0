@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
   <link rel="stylesheet" href="/templates/css/style.css">
   <link rel="stylesheet" href="/templates/css/Home.css">
   <link rel="shortcut icon" type="x-icon" href="source/img/LogoIcon.png">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
   <header>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <a href="/"><img src="source/img/logo.png"></a>
     <input type="checkbox" id="menu-bar">
-    <label for="menu-bar" class="menu"><box-icon name='menu'></box-icon></label>
+    <label for="menu-bar" class="menu"><i class='bx bx-menu'></i></label>
     <nav class="navbar">
       <ul>
         <li><a href="/">홈</a></li>
@@ -21,11 +23,35 @@
         <li><a href="/Ask">신청</a></li>
         <li><a href="/Search">조회</a></li>
         <li><a href="/Inquiry">문의</a></li>
+        <li class="loginInMenu"><a href="/api/login">로그인</a></li>
+        <li class="userInMenu"><a href="/api/user">프로필</a></li>
       </ul>
     </nav>
     <nav class="LoginWrap">
-      <a href="/api/login">로그인</a>
+      <a href="/api/login" class="login"><i class='bx bxs-user-circle'></i></a>
+      <a href="/api/user" class="user" style="display: none;"><i class='bx bxs-user-circle'></i></a>
     </nav>
+    <script>
+      function handleResize() {
+        const loginInMenu = document.querySelector('.loginInMenu');
+        const userInMenu = document.querySelector('.userInMenu');
+
+        if (window.innerWidth <= 991) {
+          loginInMenu.style.display = 'initial';
+          userInMenu.style.display = 'none';
+        } else {
+          loginInMenu.style.display = 'none';
+          userInMenu.style.display = 'none';
+        }
+      }
+
+      // 초기 로드 시 실행
+      handleResize();
+
+      // 화면 크기 변경 시 이벤트 리스너 추가
+      window.addEventListener('resize', handleResize);
+
+    </script>
   </header>
   <section>
 
@@ -34,34 +60,7 @@
 
   </section>
   <footer>
-    <div class="row">
-      <div class="col">
-        <img src="source/img/logo.png" class="logo">
-        <p>공주고 3D프린터실은 요청하시는 모든 것을 프린팅해주는 서비스입니다.</p>
-      </div>
-      <div class="col">
-        <h3>찾아오는 길</h3>
-        <p>공주고등학교 과학정보관 2층 3D프린터실</p>
-        <p><a href="https://maps.app.goo.gl/9DQKK5ZnkdAi4hfk6">충청남도 공주시 공주고담길 2 (중학동)</a></p>
-      </div>
-      <div class="col">
-        <h3>바로가기</h3>
-        <ul>
-          <li><a href="/Info">소개</a></li>
-          <li><a href="/Esetimate">견적</a></li>
-          <li><a href="/Ask">신청</a></li>
-          <li><a href="/Such">조회</a></li>
-          <li><a href="/Inquery">문의</a></li>
-        </ul>
-      </div>
-      <div class="col">
-        <h3>연락처</h3>
-        <p>Web Manage <a href="mailto:20231601@kongjugo.cnehs.kr">20231601@kongjugo.cnehs.kr</a></p>
-        <p>Print Manger <a href="mailto:20231720@kongjugo.cnehs.kr">20231720@kongjugo.cnehs.kr</a></p>
-      </div>
-    </div>
-    <hr>
-    <p class="copyright">Kongjugo 3D Printer Room @2024 - All Rights Reserved</p>
+
   </footer>
 </body>
 
