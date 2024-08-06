@@ -8,25 +8,49 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/List.css">
     <link rel="shortcut icon" type="x-icon" href="source/img/LogoIcon.png">
-</head>
-
-<body>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  </head>
+  
+  <body>
     <header>
-        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-        <a href="/"><img src="source/img/logo.png"></a>
-        <input type="checkbox" id="menu-bar">
-        <label for="menu-bar" class="menu"><box-icon name='menu'></box-icon></label>
-        <nav class="navbar">
-            <ul>
-                <li><a href="/">홈</a></li>
-                <li><a href="/Info">소개</a></li>
-                <li><a href="/Esetimate">견적</a></li>
-                <li><a href="/Ask">신청</a></li>
-                <li><a href="/Search">조회</a></li>
-                <li><a href="/Inquiry">문의</a></li>
-            </ul>
-        </nav>
+      <a href="/"><img src="source/img/logo.png"></a>
+      <input type="checkbox" id="menu-bar">
+      <label for="menu-bar" class="menu"><i class='bx bx-menu'></i></label>
+      <nav class="navbar">
+        <ul>
+          <li><a href="/">홈</a></li>
+          <li><a href="/Esetimate">견적</a></li>
+          <li><a href="/Ask">신청</a></li>
+          <li><a href="/Search">조회</a></li>
+          <li><a href="/Inquiry">문의</a></li>
+          <li class="loginInMenu"><a href="/api/login">로그인</a></li>
+          <li class="userInMenu"><a href="/api/user">프로필</a></li>
+        </ul>
+      </nav>
+      <nav class="LoginWrap">
+        <a href="/api/login" class="login">로그인</a>
+        <a href="/api/user" class="user" style="display: none;"><i class='bx bxs-user-circle'></i></a>
+      </nav>
+      <script>
+        function handleResize() {
+          const loginInMenu = document.querySelector('.loginInMenu');
+          const userInMenu = document.querySelector('.userInMenu');
+  
+          if (window.innerWidth <= 991) {
+            loginInMenu.style.display = 'initial';
+            userInMenu.style.display = 'none';
+          } else {
+            loginInMenu.style.display = 'none';
+            userInMenu.style.display = 'none';
+          }
+        }
+  
+        handleResize();
+  
+        window.addEventListener('resize', handleResize);
+      </script>
     </header>
+    
     <section>
         <div class="board_wrap">
             <div class="board_title">
