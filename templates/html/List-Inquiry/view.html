@@ -33,17 +33,20 @@
       </nav>
       <script>
         function handleResize() {
-          const loginInMenu = document.querySelector('.loginInMenu');
-          const userInMenu = document.querySelector('.userInMenu');
-  
-          if (window.innerWidth <= 991) {
-            loginInMenu.style.display = 'initial';
-            userInMenu.style.display = 'none';
-          } else {
-            loginInMenu.style.display = 'none';
-            userInMenu.style.display = 'none';
-          }
+        const loginInMenu = document.querySelector('.loginInMenu');
+        const userInMenu = document.querySelector('.userInMenu');
+        const MenuBar = document.querySelector('.menu');
+
+        if (window.innerWidth <= 991) {
+          loginInMenu.style.display = 'initial';
+          userInMenu.style.display = 'none';
+          MenuBar.style.display = "initial";
+        } else {
+          loginInMenu.style.display = 'none';
+          userInMenu.style.display = 'none';
+          MenuBar.style.display = "none";
         }
+      }
   
         handleResize();
   
