@@ -61,9 +61,8 @@ header .navbar ul li a {
 }
 
 header .navbar ul li a:hover {
-    color: #999;
-    transform: scale(1.2) translateY(1px);
-    transition: .4s;
+    color: #fff;
+    background-color: #000;
 }
 
 header form button {
@@ -123,7 +122,7 @@ header label {
 
 .LoginWrap a:hover {
     color: #fff;
-    background-color: #999;
+    background-color: #000;
 }
 
 @media(max-width:991px){
