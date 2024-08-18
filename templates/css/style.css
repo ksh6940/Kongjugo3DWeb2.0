@@ -23,7 +23,7 @@
 section {
     display: flex;
     width: 100%;
-    height: 10rem;
+    height: auto;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
@@ -32,7 +32,7 @@ section {
 /* header */
 header {
     position: fixed;
-    top: 0; 
+    top: 0;
     left: 0;
     right: 0;
     padding: 20px 7%;
@@ -87,7 +87,7 @@ header .navbar ul li ul li {
     border-top: 1px solid rgba(0, 0, 0, .1);
 }
 
-header .navbar ul li:hover > ul {
+header .navbar ul li:hover>ul {
     display: initial;
 }
 
@@ -111,7 +111,7 @@ header label {
     margin: 0;
 }
 
-.LoginWrap i{
+.LoginWrap i {
     font-size: 30px;
     padding: 0;
     margin: 0;
@@ -130,7 +130,7 @@ header label {
     background-color: #000;
 }
 
-@media(max-width:991px){
+@media(max-width:991px) {
     header {
         padding: 20px;
     }
@@ -140,7 +140,7 @@ header label {
         font-size: 30px;
     }
 
-    header .navbar{
+    header .navbar {
         position: absolute;
         top: 100%;
         left: 0;
@@ -163,7 +163,7 @@ header label {
         background: #eee;
     }
 
-    #menu-bar:checked ~.navbar {
+    #menu-bar:checked~.navbar {
         display: initial;
     }
 
@@ -175,51 +175,86 @@ header label {
 
 /* Footer */
 footer {
-    background: linear-gradient(to right, #f55a2b, #f56d1e);;
+    background: linear-gradient(to right, #f55a2b, #f56d1e);
     color: #000;
     padding: 40px 0;
     margin-top: 5rem;
-  }
-  
-  .footer-container {
+}
+
+.footer-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
-  }
-  
-  .footer-section {
+}
+
+.footer-section {
     flex: 1;
     margin: 0 20px;
     min-width: 200px;
-  }
-  
-  .footer-section h3 {
+}
+
+.footer-section h3 {
     margin-bottom: 15px;
-  }
-  
-  .footer-section ul {
+}
+
+.footer-section ul {
     list-style-type: none;
     padding: 0;
-  }
-  
-  .footer-section ul li {
+}
+
+.footer-section ul li {
     margin-bottom: 10px;
-  }
-  
-  .footer-section ul li a {
-    color: #333;
+}
+
+.footer-section ul li a {
+    color: #000;
     text-decoration: none;
-  }
-  
-  .footer-section ul li a:hover {
+}
+
+.footer-section ul li a:hover {
     text-decoration: underline;
-  }
-  
-  .footer-bottom {
+}
+
+.footer-bottom {
     text-align: center;
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid #ddd;
-  }
+}
+
+/* 기존 CSS 위에 추가 */
+@media (max-width: 480px) {
+    footer {
+        padding: 20px 0;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        margin: 10px 0;
+        min-width: 100%;
+    }
+
+    .footer-section h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .footer-section p {
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+    .footer-bottom {
+        margin-top: 10px;
+        margin-bottom: 12vh;
+        padding-top: 10px;
+        font-size: 12px;
+    }
+}
