@@ -1,7 +1,6 @@
 // Npm 라이브러리 불러오기
 const express = require("express");
 const bodyParser = require("body-parser");
-const session = require('express-session');
 const multer = require("multer");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -30,11 +29,6 @@ let JsonData;
 let finallyjson;
 
 // Express 미들웨어 설정
-app.use(session({
-  secret: 'secret_key',
-  resave: false,
-  saveUninitialized: true,
-}));
 app.use(bodyParser.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use(express.static(path.join(__dirname + "/templates")));
