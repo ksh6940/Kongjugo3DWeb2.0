@@ -6,194 +6,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공주고 3D 프린터실</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/Form.css">
+    <link rel="stylesheet" href="css/Ask.css">
     <link rel="shortcut icon" type="x-icon" href="source/img/LogoIcon.png">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  </head>
-  
-  <body>
+</head>
+
+<body>
     <header>
-      <a href="/"><img src="source/img/logo.png"></a>
-      <input type="checkbox" id="menu-bar">
-      <label for="menu-bar" class="menu"><i class='bx bx-menu'></i></label>
-      <nav class="navbar">
-        <ul>
-          <li><a href="/">홈</a></li>
-          <li><a href="/Esetimate">견적</a></li>
-          <li><a href="/Ask">신청</a></li>
-          <li><a href="/Search">조회</a></li>
-          <li><a href="/Inquiry">문의</a></li>
-          <li class="loginInMenu"><a href="/api/login">로그인</a></li>
-          <li class="userInMenu"><a href="/api/user">프로필</a></li>
-        </ul>
-      </nav>
-      <nav class="LoginWrap">
-        <a href="/api/login" class="login">로그인</a>
-        <a href="/api/user" class="user" style="display: none;"><i class='bx bxs-user-circle'></i></a>
-      </nav>
-      <script>
-        function handleResize() {
-        const loginInMenu = document.querySelector('.loginInMenu');
-        const userInMenu = document.querySelector('.userInMenu');
-        const MenuBar = document.querySelector('.menu');
+        <a href="/"><img src="source/img/logo.png"></a>
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar" class="menu"><i class='bx bx-menu'></i></label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">소개</a></li>
+                <li><a href="/Ask">신청</a></li>
+                <li><a href="/Search">조회</a></li>
+                <li><a href="/Option">옵션</a></li>
+                <li><a href="/Inquiry">문의</a></li>
+            </ul>
+        </nav>
+        <script>
+            function handleResize() {
+                const MenuBar = document.querySelector('.menu');
 
-        if (window.innerWidth <= 991) {
-          loginInMenu.style.display = 'initial';
-          userInMenu.style.display = 'none';
-          MenuBar.style.display = "initial";
-        } else {
-          loginInMenu.style.display = 'none';
-          userInMenu.style.display = 'none';
-          MenuBar.style.display = "none";
-        }
-      }
-  
-        handleResize();
-  
-        window.addEventListener('resize', handleResize);
-      </script>
+                if (window.innerWidth <= 991) {
+                    MenuBar.style.display = "initial";
+                } else {
+                    MenuBar.style.display = "none";
+                }
+            }
+
+            handleResize();
+
+            window.addEventListener('resize', handleResize);
+        </script>
     </header>
-    
     <section>
-        <div class="form-container">
-            <h3>3D프린팅 신청하기</h3>
-            <form action="#">
-                <div class="form-group">
-                    <label for="name">이름</label>
-                    <input type="text" id="name" name="name">
+        <div class="container">
+            <div class="header">
+                <button class="back-button" type="button" onclick="window.location.href='/'">← 돌아가기</button>
+                <button class="next-button" type="button" onclick="goToNextStep()">다음 단계 ></button>
+            </div>
+
+            <h1 class="title">3D모델링 파일이 있나요?</h1>
+            <p class="subtitle">도면 여부에 따라 작업 과정이 달라집니다.</p>
+
+            <div class="progress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
+
+            <div class="cards">
+                <div class="card" onclick="selectCard(0)">
+                    <input type="radio" name="model" class="card-radio">
+                    <h3 class="card-title">파일이 없습니다.</h3>
+                    <p class="card-subtitle">3D 도면 설계부터 필요한 경우</p>
+                    <div class="requirements">
+                        필요한 자료:<br>
+                        - 치수가 표현된 스케치<br>
+                        - 다각도에서 촬영된 이미지<br>
+                        - 사용법 및 목적 등
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">이메일</label>
-                    <input type="email" name="email" id="email">
+                <div class="card selected" onclick="selectCard(1)">
+                    <input type="radio" name="model" class="card-radio" checked>
+                    <h3 class="card-title">파일이 있습니다.</h3>
+                    <p class="card-subtitle">3D 출력이 바로 가능한 경우</p>
+                    <div class="requirements">
+                        필요한 자료:<br>
+                        - STL, OBJ 3D 파일<br>
+                        - 사용법 및 목적 등
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="month">작업 희망일</label>
-                    <input type="date" name="month" id="month">
-                </div>
-                <div class="form-group">
-                    <label for="address">배송주소</label>
-                    <input type="text" name="address" id="address">
-                </div>
-                <div class="form-group">
-                    <label for="detail">설명</label>
-                    <textarea name="detail" id="detail" placeholder="출력물에 대해 설명해주세요"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="file">첨부파일</label>
-                    <input type="file" name="file" id="file">
-                </div>
-                <button type="submit" id="submitButton">제출</button>
-                <button type="button" id="resetButton">초기화</button>
-            </form>
+            </div>
         </div>
-    </section>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const textarea = document.getElementById('detail');
-            const resetButton = document.getElementById('resetButton');
 
-            function adjustTextareaHeight(el) {
-                el.style.height = 'auto';
-                el.style.height = (el.scrollHeight) + 'px';
+        <script>
+            function selectCard(index) {
+                const cards = document.querySelectorAll('.card');
+                const radios = document.querySelectorAll('.card-radio');
+
+                cards.forEach(card => card.classList.remove('selected'));
+                cards[index].classList.add('selected');
+
+                radios.forEach(radio => radio.checked = false);
+                radios[index].checked = true;
             }
 
-            adjustTextareaHeight(textarea);
+            function goToNextStep() {
+                const selectedCard = document.querySelector('.card-radio:checked');
+                const selectedIndex = Array.from(document.querySelectorAll('.card-radio')).indexOf(selectedCard);
+                let dataToSend;
 
-            textarea.addEventListener('input', function () {
-                adjustTextareaHeight(this);
-            });
-
-            function clearValue() {
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('month').value = '';
-                document.getElementById('detail').value = '';
-                document.getElementById('file').value = '';
-                document.getElementById('address').value = '';
-
-                // textarea 높이 조정
-                adjustTextareaHeight(textarea);
-            }
-
-            resetButton.addEventListener('click', clearValue);
-
-            function getValue(){
-                const name = document.getElementById('name').value; 
-                const email = document.getElementById('email').value; 
-                const month = document.getElementById('month').value;
-                const detail = document.getElementById('detail').value; 
-                const file = document.getElementById('file').value;
-                const address = document.getElementById('address').value
-
-                const data = {
-                    "name": name,
-                    "email": email,
-                    "detail": detail,
-                    "file": file,
-                    "deadline": month,
-                    "address": address
+                // 파일 유무에 따라 데이터 설정
+                if (selectedIndex === 0) {
+                    dataToSend = { file: 'No' };
+                } else if (selectedIndex === 1) {
+                    dataToSend = { file: 'Yes' };
                 }
 
-                return data;
-            }
-
-            function fetchAPI(){
-                const data = getValue();
-
-                fetch('http://localhost:3000/api/products', {
+                // AJAX 요청을 통해 데이터 전송
+                fetch('/api/writeform/ask', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(dataToSend)
                 })
-                .then(response => {
-                    if (response.ok){
-                        return response.json();
-                    } else {
-                        throw new Error('네트워크 응답에 문제가 있습니다')
+                .then(response => response.json())
+                .then(data => {
+                    // 서버의 응답에 따라 페이지 이동 및 데이터 전달
+                    if (data.nextPage) {
+                        // 데이터 전달을 위해 queryString 추가
+                        const queryString = new URLSearchParams(dataToSend).toString();
+                        window.location.href = `${data.nextPage}?${queryString}`; // 서버가 보낸 URL로 이동
                     }
                 })
-                .then(data => {
-                    console.log('성공 : ', data);
-                })
-                .catch(error => {
-                    console.error('오류 발생 : ', error)
-                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
             }
-
-            submitButton.addEventListener('click', fetchAPI);
-        });
-    </script>
+        </script>
+    </section>
     <footer>
-        <div class="row">
-            <div class="col">
-                <img src="source/img/logo.png" class="logo">
-                <p>공주고 3D프린터실은 요청하시는 모든 것을 프린팅해주는 서비스입니다.</p>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>공주고 3D 프린터실</h3>
+                <p>원하는 모든 것, 3D프린터로 출력해드리는 서비스입니다.</p>
             </div>
-            <div class="col">
-                <h3>찾아오는 길</h3>
-                <p>공주고등학교 과학정보관 2층 3D프린터실</p>
-                <p><a href="https://maps.app.goo.gl/9DQKK5ZnkdAi4hfk6">충청남도 공주시 공주고담길 2 (중학동)</a></p>
-            </div>
-            <div class="col">
-                <h3>바로가기</h3>
-                <ul>
-                    <li><a href="/Info">소개</a></li>
-                    <li><a href="/Esetimate">견적</a></li>
-                    <li><a href="/Ask">신청</a></li>
-                    <li><a href="/Such">조회</a></li>
-                    <li><a href="/Inquery">문의</a></li>
-                </ul>
-            </div>
-            <div class="col">
+            <div class="footer-section">
                 <h3>연락처</h3>
-                <p>Web Manage <a href="mailto:20231601@kongjugo.cnehs.kr">20231601@kongjugo.cnehs.kr</a></p>
-                <p>Print Manger <a href="mailto:20231720@kongjugo.cnehs.kr">20231720@kongjugo.cnehs.kr</a></p>
+                <p>주소: 충청남도 공주시 공주고담길2 (과학정보관 2층)</p>
+                <p>메일: 20231601@kongjugo.cnehs.kr</p>
             </div>
         </div>
-        <hr>
-        <p class="copyright">Kongjugo 3D Printer Room @2024 - All Rights Reserved</p>
+        <div class="footer-bottom">
+            <p>2024 공주고 3D 프린터실. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 

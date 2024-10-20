@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공주고 3D 프린터실</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Ask.css">
+    <link rel="stylesheet" href="/css/custom.css">
+    <link rel="shortcut icon" type="x-icon" href="/source/img/LogoIcon.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        #detail {
+            width: 100%;
+            height: 40px;
+            resize: none;
+            overflow: hidden;
+        }
+        h3 {
+            padding: 15px 0; /* 상단과 하단에 10px 패딩 추가 */
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            fetch("/api/getjson", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ requestData: "needed" })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.querySelector(".name").textContent = data.username;
+                document.querySelector(".email").textContent = data.useremail;
+                document.querySelector(".address").textContent = data.address;
+                document.querySelector(".date").textContent = data.deliveryDate;
+
+                const productCard = document.querySelector(".product-card");
+                productCard.innerHTML = "";
+                if (data.product && data.product.length) {
+                    data.product.forEach(product => {
+                        const productItem = document.createElement("p");
+                        productItem.textContent = product;
+                        productCard.appendChild(productItem);
+                    });
+                } else {
+                    productCard.textContent = "등록된 제품이 없습니다.";
+                }
+            })
+            .catch(error => console.error("Error:", error));
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <a href="/"><img src="/source/img/logo.png"></a>
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar" class="menu"><i class='bx bx-menu'></i></label>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">소개</a></li>
+                <li><a href="/Ask">신청</a></li>
+                <li><a href="/Search">조회</a></li>
+                <li><a href="/Option">옵션</a></li>
+                <li><a href="/Inquiry">문의</a></li>
+            </ul>
+        </nav>
+        <script>
+            function handleResize() {
+                const MenuBar = document.querySelector('.menu');
+                if (window.innerWidth <= 991) {
+                    MenuBar.style.display = "initial";
+                } else {
+                    MenuBar.style.display = "none";
+                }
+            }
+            handleResize();
+            window.addEventListener('resize', handleResize);
+        </script>
+    </header>
+    <section>
+        <div class="container">
+            <div class="header">
+                <button class="back-button" type="button" onclick="window.location.href='/Ask'">← 홈으로 가기</button>
+            </div>
+
+            <h1 class="title">주문 완료</h1>
+            <p class="subtitle">주문 접수가 완료되었습니다.</p>
+
+            <div class="progress-dots">
+                <span class="dot active"></span>
+                <span class="dot active"></span>
+                <span class="dot active"></span>
+                <span class="dot active"></span>
+            </div>
+
+            <div class="order-card">
+                <div class="user-card">
+                    <div class="info-group">
+                        <h3>성명</h3>
+                        <p><span class="name">Loading...</span></p>
+                    </div>
+                    <div class="info-group">
+                        <h3>이메일</h3>
+                        <p><span class="email">Loading...</span></p>
+                    </div>
+                    <div class="info-group">
+                        <h3>배송 주소</h3>
+                        <p><span class="address">Loading...</span></p>
+                    </div>
+                    <div class="info-group">
+                        <h3>배송 희망일</h3>
+                        <p><span class="date">Loading...</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>공주고 3D 프린터실</h3>
+                <p>원하는 모든 것, 3D프린터로 출력해드리는 서비스입니다.</p>
+            </div>
+            <div class="footer-section">
+                <h3>연락처</h3>
+                <p>주소: 충청남도 공주시 공주고담길2 (과학정보관 2층)</p>
+                <p>메일: 20231601@kongjugo.cnehs.kr</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>2024 공주고 3D 프린터실. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -18,32 +18,20 @@
     <label for="menu-bar" class="menu"><i class='bx bx-menu'></i></label>
     <nav class="navbar">
       <ul>
-        <li><a href="/">홈</a></li>
-        <li><a href="/Esetimate">견적</a></li>
+        <li><a href="/">소개</a></li>
         <li><a href="/Ask">신청</a></li>
         <li><a href="/Search">조회</a></li>
+        <li><a href="/Option">옵션</a></li>
         <li><a href="/Inquiry">문의</a></li>
-        <li class="loginInMenu"><a href="/api/login">로그인</a></li>
-        <li class="userInMenu"><a href="/api/user">프로필</a></li>
       </ul>
-    </nav>
-    <nav class="LoginWrap">
-      <a href="/api/login" class="login">로그인</a>
-      <a href="/api/user" class="user" style="display: none;"><i class='bx bxs-user-circle'></i></a>
     </nav>
     <script>
       function handleResize() {
-        const loginInMenu = document.querySelector('.loginInMenu');
-        const userInMenu = document.querySelector('.userInMenu');
         const MenuBar = document.querySelector('.menu');
 
         if (window.innerWidth <= 991) {
-          loginInMenu.style.display = 'initial';
-          userInMenu.style.display = 'none';
           MenuBar.style.display = "initial";
         } else {
-          loginInMenu.style.display = 'none';
-          userInMenu.style.display = 'none';
           MenuBar.style.display = "none";
         }
       }

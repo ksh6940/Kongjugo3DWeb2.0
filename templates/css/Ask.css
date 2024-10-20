@@ -1,0 +1,311 @@
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.back-button,
+.next-button {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.next-button {
+    padding: 8px 24px;
+    background: orange;
+    color: white;
+    border-radius: 4px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.progress,
+.progress-dots {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.progress-dot,
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #DDD;
+}
+
+.progress-dot.active,
+.dot.active {
+    background: #333;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.card {
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.card.selected {
+    border: 2px solid #0095FF;
+}
+
+.card-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.card-subtitle,
+.requirements {
+    color: #666;
+    margin-bottom: 16px;
+}
+
+.requirements li {
+    margin-bottom: 4px;
+}
+
+.upload-container {
+    display: flex;
+    gap: 20px;
+    min-height: 400px;
+}
+
+.file-card {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    display: none;
+}
+
+.file-card.visible {
+    display: block;
+}
+
+.preview-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.file-options {
+    margin-top: 20px;
+}
+
+.option-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.upload-area {
+    flex-grow: 1;
+    border: 2px dashed orange;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 100%;
+    min-height: 200px; /* 원하는 최소 높이로 설정 */
+    height: 400px; /* 원하는 높이로 설정 */
+}
+
+.upload-area.full-width {
+    width: 100%;
+}
+
+.upload-icon {
+    width: 64px; /* 업로드 아이콘 크기 증가 */
+    height: 64px; /* 업로드 아이콘 크기 증가 */
+    margin-bottom: 16px;
+}
+
+select,
+input {
+    padding: 4px 8px;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+}
+
+#fileInput {
+    display: none;
+}
+
+.file-card {
+    width: 100%; /* 전체 너비로 설정 */
+    max-width: 400px; /* 최대 너비 설정 */
+    padding: 24px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+    display: none;
+}
+
+.user-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 24px;
+    border: 1px solid #DDD;
+    border-radius: 8px;
+}
+
+/* input 스타일 */
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+    width: 100%; /* 전체 너비로 설정 */
+    padding: 6px; /* 패딩 추가 */
+    border: 1px solid #ddd; /* 테두리 색상 */
+    border-radius: 4px; /* 모서리 둥글게 */
+    font-size: 14px; /* 글자 크기 설정 */
+    transition: border-color 0.3s; /* 테두리 전환 효과 */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="date"]:focus {
+    border-color: #0095FF; /* 포커스 시 테두리 색상 변경 */
+    outline: none; /* 기본 아웃라인 제거 */
+}
+
+label {
+    display: block; /* 라벨을 블록 요소로 설정 */
+    font-size: 10px; /* 라벨 글자 크기 */
+    color: #555; /* 라벨 글자 색상 */
+    margin-bottom: 8px; /* 라벨과 입력 필드 간 여백 */
+}
+
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.file-icon {
+    background: #f5f5f5;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.file-details h3 {
+    font-size: 16px;
+    color: #333;
+    margin: 0 0 4px 0;
+}
+
+.file-type {
+    font-size: 14px;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.color-picker-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.color-preview {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 2px solid #eee;
+    overflow: hidden;
+    position: relative;
+}
+
+.color-preview input[type="color"] {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.color-value {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    font-family: monospace;
+    color: #666;
+}
+
+.count-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.count-container input[type="range"] {
+    flex: 1;
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    -webkit-appearance: none;
+}
+
+.count-container input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #0095FF;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.count-value {
+    font-size: 14px;
+    color: #666;
+    min-width: 30px;
+    text-align: right;
+}
+
+#detail {
+    padding: 10px; /* 원하는 여백 크기 설정 */
+    color: #000000; /* 플레이스홀더 색상 설정 */
+}
